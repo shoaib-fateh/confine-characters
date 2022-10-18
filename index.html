@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>My frist Ex java script</title>
+    <!-- link to bootstrap -->
+    <link rel='stylesheet' href='./css/bootstrap.min.css'>
+</head>
+<body class='bg-light container p-5'>
+
+    <div class="card">
+        <div class="card-body">
+            <p class='text-danger'><b>#Updated:</b> You Now Have <kbd class="bg-danger">180</kbd> Characters To Play With!</p>
+        
+            <textarea onkeydown='check_length()' id='text-length' class='form-control' name='tweetSms' id='tweetSms' rows='10' autofocus></textarea>
+        
+            <p class='text-primary'>
+                <kbd class="bg-info" id='entered_characters'>0</kbd> Characters Entered | <kbd class="bg-info" id='all_characters'>180</kbd> Characters Remaining
+            </p>
+
+            <!-- Script code -->
+            <script>
+                setInterval(check_length, 0);
+
+                function check_length(){
+                    var check_length_text = document.getElementById('text-length').value;
+                    var length = check_length_text.length;
+
+                    var entered_characters = document.getElementById("entered_characters").innerHTML = length;
+                    var all_characters = document.getElementById("all_characters").innerHTML = 180 - length;
+
+                    if(entered_characters >= 180 || all_characters <= -1){
+                        var slice = check_length_text.slice(0,180);  
+
+                        document.getElementById('text-length').value = slice;
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
